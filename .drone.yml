@@ -47,6 +47,5 @@ volumes:
     host:
       path: /var/run/docker.sock
 
-
 node:
   instance: agent-amd64
