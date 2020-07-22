@@ -9,43 +9,9 @@ steps:
       - name: docker
         path: /var/run/docker.sock
     commands:
-      - dapper ci
-
-  - name: github-binary-publish-release
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: github_token
-      checksum:
-        - sha256
-      files:
-        - "bin/kontainer-engine-driver-huawei-*"
-    when:
-      branch: master
-      event: tag
-      ref:
-        exclude: [ refs/tags/*rc* ]
-
-  - name: github-binary-publish-prerelease
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: github_token
-      checksum:
-        - sha256
-      files:
-        - "bin/kontainer-engine-driver-huawei-*"
-      prerelease: true
-    when:
-      branch: master
-      event: tag
-      ref:
-        include: [ refs/tags/*rc* ]
+      - echo Hello World
 
 volumes:
   - name: docker
     host:
       path: /var/run/docker.sock
-
-node:
-  instance: agent-amd64
