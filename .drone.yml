@@ -9,7 +9,7 @@ steps:
       - name: docker
         path: /var/run/docker.sock
     commands:
-      - echo $PATH
+      - dapper ci
 
 volumes:
   - name: docker
