@@ -9,7 +9,7 @@ steps:
       - name: docker
         path: /var/run/docker.sock
     commands:
-      - echo Hello World
+      - echo $PATH
 
 volumes:
   - name: docker
