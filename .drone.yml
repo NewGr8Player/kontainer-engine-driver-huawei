@@ -6,7 +6,8 @@ steps:
     privileged: true
     image: rancher/dapper:1.11.2
     volumes:
-      - name: docker
+      - host:
+          path: /var/run/docker.sock
         path: /var/run/docker.sock
     commands:
       - dapper ci
@@ -41,11 +42,6 @@ steps:
       event: tag
       ref:
         include: [ refs/tags/*rc* ]
-
-volumes:
-  - name: docker
-    host:
-      path: /var/run/docker.sock
 
 node:
   instance: agent-amd64
